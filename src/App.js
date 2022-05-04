@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import BudgetStats from './components/BudgetStats';
+import BudgetForm from './components/BudgetForm';
+import EntriesList from './components/EntriesList';
 
-function App() {
+const App = () => {
+  const storeContent = useSelector((state) => state.operations.content);
+
+  useEffect(() => {
+    console.log('store content: ', storeContent);
+  }, [storeContent]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <div className='ui grid'>
+        <div className='four wide column'>
+          <BudgetStats />
+        </div>
+        <div className='four wide column'>
+          <BudgetForm />
+        </div>
+        <div className='four wide column'>
+          <EntriesList />
+        </div>
+        <div className='four wide column'>{storeContent}</div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
