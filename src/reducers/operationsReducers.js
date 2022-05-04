@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import * as actions from '../actions/types';
-export const INITIAL_STATE = { content: 'Hello World 2', budgetEntries: {} };
+export const INITIAL_STATE = { budgetEntries: {}, selectedEntry: undefined };
 
 const operations = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -19,6 +19,10 @@ const operations = (state = INITIAL_STATE, action) => {
     case actions.DELETE_BUDGET_ENTRY: {
       return _.omit(state.budgetEntries, action.payload); // payload === id
     }
+    case actions.SELECT_BUDGET_ENTRY: {
+      return { ...state, selectedEntry: state.budgetEntries[action.payload] }; // payload === id
+    }
+
     default:
       return state;
   }

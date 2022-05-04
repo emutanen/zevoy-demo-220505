@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudgetEntryAction } from '../actions';
 
+// TODO: Empty items can be added and there is no validation whatsoever
+
 const BudgetForm = () => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
@@ -12,11 +14,8 @@ const BudgetForm = () => {
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    /*     console.log('title: ', title);
-    console.log('amount: ', amount);
-    console.log('description: ', description); */
-
     dispatch(addBudgetEntryAction(title, amount, description));
+
     setTitle('');
     setAmount(0);
     setDescription('');

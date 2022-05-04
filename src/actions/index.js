@@ -7,3 +7,10 @@ export const addBudgetEntryAction = (title, amount, description) => {
     payload: { amount, description, title, id: _.uniqueId() },
   };
 };
+
+export const selectBudgetEntry = (id) => {
+  return {
+    type: actions.SELECT_BUDGET_ENTRY,
+    payload: id,
+  };
+};

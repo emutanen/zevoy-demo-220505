@@ -1,29 +1,25 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import BudgetStats from './components/BudgetStats';
 import BudgetForm from './components/BudgetForm';
 import EntriesList from './components/EntriesList';
+import EntryDetails from './components/EntryDetails';
 
 const App = () => {
-  const storeContent = useSelector((state) => state.operations.content);
-
-  useEffect(() => {
-    console.log('store content: ', storeContent);
-  }, [storeContent]);
-
   return (
     <div className='app'>
-      <div className='ui grid'>
-        <div className='four wide column'>
+      <div className='ui stackable four column grid'>
+        <div className='column'>
           <BudgetStats />
         </div>
-        <div className='four wide column'>
+        <div className='column'>
           <BudgetForm />
         </div>
-        <div className='four wide column'>
+        <div className='column'>
           <EntriesList />
         </div>
-        <div className='four wide column'>{storeContent}</div>
+        <div className='column'>
+          <EntryDetails />
+        </div>
       </div>
     </div>
   );
