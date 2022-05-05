@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudgetEntryAction } from '../actions';
 
+// TODO: disable submit button if all states are defaults
 // TODO: Empty items can be added and there is no validation whatsoever
 
 const BudgetForm = () => {
@@ -23,7 +24,7 @@ const BudgetForm = () => {
 
   return (
     <div className='budget-form'>
-      <h2 className='ui header'>Add new entry</h2>
+      <span className='ui large text'>Add Items</span>
       <div className='ui divider'></div>
       <form className='ui form' onSubmit={onFormSubmit}>
         <div className='field'>

@@ -23,7 +23,7 @@ const BudgetStats = () => {
   });
 
   return (
-    <div className='ui segment'>
+    <div className='ui green segment' style={{ textAlign: 'center' }}>
       <h1 className='ui header'>Budget Stats</h1>
       <div className='ui divider'></div>
       <div className='ui statistic'>
@@ -31,9 +31,11 @@ const BudgetStats = () => {
         <div className='label'>Items in Budget</div>
       </div>
       <div className='ui divider'></div>
-      <div className='ui statistic'>
-        <div className='value'>{roundedTotalBudget ?? 'Not available'}</div>
+      <div className='ui small statistic'>
         <div className='label'>Total amount of balance</div>
+        <div className='value' style={{ paddingTop: '0.28em' }}>
+          {roundedTotalBudget ?? 'Not available'}
+        </div>
       </div>
     </div>
   );

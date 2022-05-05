@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const EntryDetails = () => {
   const selectedEntry = useSelector((state) => state.operations.selectedEntry);
 
-  const roundedPricing = selectedEntry?.amount.toLocaleString('fullwide', {
+  const roundedPricing = Number.parseFloat(selectedEntry?.amount).toLocaleString('fullwide', {
     maximumFractionDigits: 2,
     style: 'currency',
     currency: 'EUR',

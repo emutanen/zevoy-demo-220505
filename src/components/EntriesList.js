@@ -32,6 +32,8 @@ const EntriesList = () => {
 
   return (
     <div className='entries-list'>
+      <span className='ui large text'>Items In Budget</span>
+      <div className='ui divider'></div>
       <div className='ui list'>
         {EntriesJSX.map((entry) => {
           return entry;
