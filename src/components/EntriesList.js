@@ -24,7 +24,7 @@ const EntriesList = () => {
   const selectedEntry = useSelector((state) => state.operations.selectedEntry);
   const dispatch = useDispatch();
   const entries = useSelector((state) => state.operations.budgetEntries);
-  console.log(JSON.stringify(entries));
+  // console.log(JSON.stringify(entries));
   const EntriesJSX = _.map(entries, (entry) => {
     const { title, amount, description, id } = entry;
     return renderListEntry(title, amount, description, id, dispatch, selectedEntry);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBudgetEntryAction } from '../actions';
+import FormFields from './FormFields';
 
 // TODO: disable submit button if all states are defaults
 // TODO: Empty items can be added and there is no validation whatsoever
@@ -27,37 +28,15 @@ const BudgetForm = () => {
       <span className='ui large text'>Add Items</span>
       <div className='ui divider'></div>
       <form className='ui form' onSubmit={onFormSubmit}>
-        <div className='field'>
-          <label>Title</label>
-          <input
-            type='text'
-            name='title'
-            onChange={(event) => setTitle(event.target.value)}
-            placeholder='Entry title'
-            value={title}
-          />
-        </div>
-        <div className='field'>
-          <label>Description</label>
-          <textarea
-            rows={4}
-            onChange={(event) => setDescription(event.target.value)}
-            placeholder='Enter a description'
-            value={description}></textarea>
-        </div>
-        <div className='field'>
-          <label>Amount</label>
-          <input
-            type='number'
-            name='balance'
-            onChange={(event) => setAmount(event.target.value)}
-            placeholder='Enter balance'
-            value={amount}
-          />
-        </div>
-        <div className='field'>
-          <button className='ui button primary'>Add new entry</button>
-        </div>
+        <FormFields
+          title={title}
+          setTitle={setTitle}
+          description={description}
+          setDescription={setDescription}
+          amount={amount}
+          setAmount={setAmount}
+        />
+        <button className='ui button primary'>Add new entry</button>
       </form>
     </div>
   );

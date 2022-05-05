@@ -14,7 +14,12 @@ const operations = (state = INITIAL_STATE, action) => {
       return state.budgetEntries[action.payload.id];
     }
     case actions.UPDATE_BUDGET_ENTRY: {
-      return { ...state, budgetEntries: { ...state.budgetEntries, [action.payload.id]: action.payload } };
+      const updatedBudgetEntries = { ...state.budgetEntries, [action.payload.id]: action.payload };
+      return {
+        ...state,
+        budgetEntries: updatedBudgetEntries,
+        selectedEntry: updatedBudgetEntries[state.selectedEntry.id],
+      };
     }
     case actions.DELETE_BUDGET_ENTRY: {
       return _.omit(state.budgetEntries, action.payload); // payload === id

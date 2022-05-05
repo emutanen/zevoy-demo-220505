@@ -8,6 +8,13 @@ export const addBudgetEntryAction = (title, amount, description) => {
   };
 };
 
+export const editBudgetEntry = (title, amount, description, id) => {
+  return {
+    type: actions.UPDATE_BUDGET_ENTRY,
+    payload: { amount, description, title, id },
+  };
+};
+
 export const selectBudgetEntry = (id) => {
   return {
     type: actions.SELECT_BUDGET_ENTRY,
