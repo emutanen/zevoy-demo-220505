@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editBudgetEntry } from '../actions';
+import { editBudgetEntry, deleteBudgetEntry } from '../actions';
 import FormFields from './FormFields';
 
 const Modal = ({ showModal, setShowModal }) => {
@@ -9,22 +9,27 @@ const Modal = ({ showModal, setShowModal }) => {
   const [editTitle, setTitle] = useState(selectedEntryData?.title);
   const [editAmount, setAmount] = useState(selectedEntryData?.amount);
   const [editDescription, setDescription] = useState(selectedEntryData?.description);
+  const [id] = useState(selectedEntryData?.id);
   const dispatch = useDispatch();
-
-  console.log('Modal selectedEntryData: ', selectedEntryData);
 
   useEffect(() => {
     if (selectedEntryData === undefined) return;
     setTitle(selectedEntryData?.title);
     setAmount(selectedEntryData.amount);
     setDescription(selectedEntryData.description);
-    console.log('Modal data in store changed.');
   }, [selectedEntryData]);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
 
     dispatch(editBudgetEntry(editTitle, editAmount, editDescription, selectedEntryId));
+    setShowModal(false);
+  };
+
+  const onClickDelete = (event) => {
+    event.preventDefault();
+
+    dispatch(deleteBudgetEntry(selectedEntryId));
     setShowModal(false);
   };
 
@@ -41,6 +46,9 @@ const Modal = ({ showModal, setShowModal }) => {
           amount={editAmount}
           setAmount={setAmount}
         />
+        <button className='negative ui button' onClick={onClickDelete}>
+          Delete entry
+        </button>
       </form>
       <div className='actions'>
         <div className='ui mini blue secondary button' onClick={() => setShowModal(false)}>

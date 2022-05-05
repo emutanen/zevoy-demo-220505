@@ -6,7 +6,7 @@ import Modal from './Modal';
 const EntryDetails = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const selectedEntry = useSelector((state) => state.operations.selectedEntry);
+  const selectedEntry = useSelector((state) => state.operations.selectedEntry) ?? null;
   const roundedPricing = Number.parseFloat(selectedEntry?.amount).toLocaleString('fullwide', {
     maximumFractionDigits: 2,
     style: 'currency',
@@ -36,7 +36,7 @@ const EntryDetails = () => {
             onClick={() => {
               setShowModal(!showModal);
             }}>
-            <i class='edit icon'></i>
+            <i className='edit icon'></i>
             Edit entry
           </div>
         </div>

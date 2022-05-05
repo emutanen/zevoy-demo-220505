@@ -22,7 +22,9 @@ const operations = (state = INITIAL_STATE, action) => {
       };
     }
     case actions.DELETE_BUDGET_ENTRY: {
-      return _.omit(state.budgetEntries, action.payload); // payload === id
+      let selectedEntry = undefined;
+      if (state.selectedEntry?.id !== action.payload) selectedEntry = state.selectedEntry;
+      return { ...state, budgetEntries: _.omit(state.budgetEntries, action.payload), selectedEntry }; // payload === id
     }
     case actions.SELECT_BUDGET_ENTRY: {
       return { ...state, selectedEntry: state.budgetEntries[action.payload] }; // payload === id

@@ -21,3 +21,10 @@ export const selectBudgetEntry = (id) => {
     payload: id,
   };
 };
+
+export const deleteBudgetEntry = (id) => {
+  return {
+    type: actions.DELETE_BUDGET_ENTRY,
+    payload: id,
+  };
+};

@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 const BudgetStats = () => {
   const budgetEntries = useSelector((state) => state.operations.budgetEntries);
-  console.log('BudgetStats: budgetEntries: ', JSON.stringify(budgetEntries));
   const totalBudget = _.reduce(
     budgetEntries,
     (acc, entry, key) => {
@@ -12,8 +11,6 @@ const BudgetStats = () => {
     },
     0.0
   );
-
-  console.log('totalBudget: ', totalBudget);
 
   const roundedTotalBudget = totalBudget.toLocaleString('fullwide', {
     maximumFractionDigits: 2,
