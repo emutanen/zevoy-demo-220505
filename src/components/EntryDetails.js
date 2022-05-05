@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import Modal from './Modal';
+
 const EntryDetails = () => {
+  const [showModal, setShowModal] = useState(false);
+
   const selectedEntry = useSelector((state) => state.operations.selectedEntry);
 
   const roundedPricing = Number.parseFloat(selectedEntry?.amount).toLocaleString('fullwide', {
@@ -21,13 +25,16 @@ const EntryDetails = () => {
             <div className='header'>{selectedEntry?.title}</div>
             <div className='description'>{selectedEntry?.description}</div>
           </div>
-
           <div className='ui statistic'>
             <div className='value'>{roundedPricing}</div>
             <div className='label'>Price</div>
           </div>
-
-          <div class='ui bottom attached button'>
+          <Modal showModal={showModal} setShowModal={setShowModal} />
+          <div
+            class='ui bottom attached button'
+            onClick={() => {
+              setShowModal(!showModal);
+            }}>
             <i class='edit icon'></i>
             Edit entry
           </div>
