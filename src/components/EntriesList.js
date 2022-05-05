@@ -3,13 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectBudgetEntry } from '../actions';
 import _ from 'lodash';
 
-// TODO: change outline icon to inline when selected
-
 const renderListEntry = (title, amount, description, id, dispatch, selectedEntry) => {
   return (
     <div className='item' key={id}>
       <i className={`arrow alternate circle right ${selectedEntry?.id === id ? '' : 'outline'} icon`}></i>
       <div className='content'>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a className='header' onClick={() => dispatch(selectBudgetEntry(id))}>
           {title}
         </a>
@@ -24,7 +23,6 @@ const EntriesList = () => {
   const selectedEntry = useSelector((state) => state.operations.selectedEntry);
   const dispatch = useDispatch();
   const entries = useSelector((state) => state.operations.budgetEntries);
-  // console.log(JSON.stringify(entries));
   const EntriesJSX = _.map(entries, (entry) => {
     const { title, amount, description, id } = entry;
     return renderListEntry(title, amount, description, id, dispatch, selectedEntry);

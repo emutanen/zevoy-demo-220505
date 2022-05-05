@@ -7,6 +7,8 @@ import EntryDetails from './components/EntryDetails';
 const App = () => {
   return (
     <div className='app'>
+      <span className='ui large text'>Zevoy Budget By Erkka</span>
+      <div className='ui divider'></div>
       <div className='ui stackable four column grid'>
         <div className='column'>
           <BudgetStats />

@@ -3,13 +3,11 @@ import { useDispatch } from 'react-redux';
 import { addBudgetEntryAction } from '../actions';
 import FormFields from './FormFields';
 
-// TODO: disable submit button if all states are defaults
-// TODO: Empty items can be added and there is no validation whatsoever
-
-const BudgetForm = () => {
+const BudgetForm = (props) => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState('');
+  const disable = title === '' && amount === 0 && description === '';
 
   const dispatch = useDispatch();
 
@@ -36,7 +34,7 @@ const BudgetForm = () => {
           amount={amount}
           setAmount={setAmount}
         />
-        <button className='ui button primary'>Add new entry</button>
+        <button className={`ui button primary ${disable ? 'disabled' : ''}`}>Add new entry</button>
       </form>
     </div>
   );

@@ -9,7 +9,6 @@ const Modal = ({ showModal, setShowModal }) => {
   const [editTitle, setTitle] = useState(selectedEntryData?.title);
   const [editAmount, setAmount] = useState(selectedEntryData?.amount);
   const [editDescription, setDescription] = useState(selectedEntryData?.description);
-  const [id] = useState(selectedEntryData?.id);
   const dispatch = useDispatch();
 
   useEffect(() => {
